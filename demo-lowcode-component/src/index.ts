@@ -1,3 +1,11 @@
+/*
+ * @Author: qgh126 qinguanghe126@126.com
+ * @Date: 2023-03-14 23:45:41
+ * @LastEditors: qgh126 qinguanghe126@126.com
+ * @LastEditTime: 2023-03-15 00:15:05
+ * @FilePath: \git_test\react-work-lowcode\test\lowcode-demo\demo-lowcode-component\src\index.ts
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ */
 import { init, plugins } from '@alilc/lowcode-engine';
 import { createFetchHandler } from '@alilc/lowcode-datasource-fetch-handler'
 import EditorInitPlugin from './plugins/plugin-editor-init';
@@ -12,6 +20,8 @@ import SimulatorResizerPlugin from '@alilc/lowcode-plugin-simulator-select';
 import ComponentPanelPlugin from './plugins/plugin-component-panel';
 import DefaultSettersRegistryPlugin from './plugins/plugin-default-setters-registry';
 import SaveSamplePlugin from './plugins/plugin-save-sample';
+
+import HistoryPanelPlugin from './plugins/plugin-history-panel';
 import PreviewSamplePlugin from './plugins/plugin-preview-sample';
 import SetRefPropPlugin from '@alilc/lowcode-plugin-set-ref-prop';
 import LogoSamplePlugin from './plugins/plugin-logo-sample';
@@ -68,9 +78,12 @@ async function registerPlugins() {
     ]
   });
 
+
   await plugins.register(CodeEditorPlugin);
 
   await plugins.register(SaveSamplePlugin);
+  await plugins.register(HistoryPanelPlugin);  // 此处上下的位置 跟编译和排列的位置 有影响
+ 
 
   await plugins.register(PreviewSamplePlugin);
 };
